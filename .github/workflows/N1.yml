@@ -4,7 +4,7 @@
 # Author: LiangJC
 #=================================================
 
-name: openwrt_18.06
+name: openwrt_N1
 
 on:
   repository_dispatch:
