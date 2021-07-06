@@ -4,7 +4,7 @@
 # Author: LiangJC
 #=================================================
 
-name: openwrt_18.06
+name: openwrt_toolchain
 
 on:
   repository_dispatch:
