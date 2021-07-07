@@ -29,7 +29,7 @@ on:
 #    types: started
 
 jobs:
-  build:
+  building:
     runs-on: Ubuntu-20.04
 
     steps:
