@@ -4,7 +4,7 @@
 # Author: LiangJC
 #=================================================
 
-name: openwrt_N1
+name: openwrt_N1_toolchain
 
 on:
   repository_dispatch:
