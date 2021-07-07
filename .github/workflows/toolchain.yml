@@ -4,7 +4,7 @@
 # Author: LiangJC
 #=================================================
 
-name: openwrt_toolchain
+name: openwrt_N1
 
 on:
   repository_dispatch:
@@ -87,7 +87,7 @@ jobs:
         chmod +x ./customize.sh && ./customize.sh
         cd openwrt
         make defconfig
-         ./scripts/feeds update -a
+        ./scripts/feeds update -a
         ./scripts/feeds install -a
         
     - name: 下载包文件
@@ -105,11 +105,8 @@ jobs:
         
     - name : 上传固件
       uses: actions/upload-artifact@main
-      run: |
-        cd openwrt
-        tar -zcf toolchain.tar.gz build_dir/toolchain*
       with:
         name: N1_toolchain
-        path: openwrt/toolchain.tar.gz
-        
+        path: openwrt/build_dir/toolchain*
+    
         
