@@ -61,18 +61,18 @@
 ### N1云编译需要注意：
 
 * 云编译取消以下选项(要不然编译速度慢)：
-  luci-app-fileborowser
-  luci-app-unblockneteasemusic
+  - luci-app-fileborowser
+  - luci-app-unblockneteasemusic
 * 把没用的关联也取消
-  * vim .config
-  * CONFIG_FILEBROWSER_COMPRESS_UPX=n
-  * CONFIG_UnblockNeteaseMusic_Go=n
-  * CONFIG_UnblockNeteaseMusic_NodeJS=n
-  * CONFIG_PACKAGE_luci-app-unblockneteasemusic=n
-  * CONFIG_PACKAGE_luci-app-unblockneteasemusic-go=n
-  * CONFIG_PACKAGE_luci-app-unblockneteasemusic-mini=n
-  * CONFIG_PACKAGE_UnblockNeteaseMusic=n
-  * CONFIG_PACKAGE_UnblockNeteaseMusic-Go=n
-  * CONFIG_UNBLOCKNETEASEMUSIC_GO_COMPRESS_UPX=n
+  - vim .config
+  - CONFIG_FILEBROWSER_COMPRESS_UPX=n
+  - CONFIG_UnblockNeteaseMusic_Go=n
+  - CONFIG_UnblockNeteaseMusic_NodeJS=n
+  - CONFIG_PACKAGE_luci-app-unblockneteasemusic=n
+  - CONFIG_PACKAGE_luci-app-unblockneteasemusic-go=n
+  - CONFIG_PACKAGE_luci-app-unblockneteasemusic-mini=n
+  - CONFIG_PACKAGE_UnblockNeteaseMusic=n
+  - CONFIG_PACKAGE_UnblockNeteaseMusic-Go=n
+  - CONFIG_UNBLOCKNETEASEMUSIC_GO_COMPRESS_UPX=n
 * 最后执行  
-  make defconfig
+  - make defconfig
