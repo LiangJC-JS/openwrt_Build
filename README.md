@@ -74,5 +74,9 @@
   - CONFIG_PACKAGE_UnblockNeteaseMusic=n
   - CONFIG_PACKAGE_UnblockNeteaseMusic-Go=n
   - CONFIG_UNBLOCKNETEASEMUSIC_GO_COMPRESS_UPX=n
+  - CONFIG_PACKAGE_node=n
+  - CONFIG_NODEJS_14=n
+  - CONFIG_NODEJS_ICU_SMALL=n
+  - CONFIG_PACKAGE_node-request=n
 * 最后执行  
   - make defconfig
