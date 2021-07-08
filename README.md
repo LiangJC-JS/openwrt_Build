@@ -25,7 +25,7 @@
 
 #### 源码来源：
 [![esir](https://img.shields.io/badge/AutoBuild-esir-red.svg?style=flat&logo=appveyor)](https://github.com/esirplayground/AutoBuild-OpenWrt)
- [![Lienol](https://img.shields.io/badge/passwall-openwrt-blueviolet.svg?style=flat&logo=appveyor)](https://github.com/xiaorouji/openwrt-passwall) 
+[![Lienol](https://img.shields.io/badge/passwall-openwrt-blueviolet.svg?style=flat&logo=appveyor)](https://github.com/xiaorouji/openwrt-passwall) 
 [![immortalwrt](https://img.shields.io/badge/immortalwrt-openwrt-orange.svg?style=flat&logo=appveyor)](https://github.com/immortalwrt/immortalwrt) 
 [![Lean](https://img.shields.io/badge/package-Lean-blueviolet.svg?style=flat&logo=appveyor)](https://github.com/coolsnowwolf/lede) 
 [![P3TERX](https://img.shields.io/badge/Actions-P3TERX-success.svg?style=flat&logo=appveyor)](https://github.com/P3TERX/Actions-OpenWrt)
@@ -57,32 +57,22 @@
 + 默认多个主题
 + 默认管理 IP: 192.168.3.1, 用户名 root，密码 password
 
-* 修改默认ip
 
-```bash
-sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
-```
-* 删除原主题	
-```bash
-rm -rf package/lean/luci-theme-argon
-```
+### N1云编译需要注意：
 
-* 添加新的主题
-```bash
-git clone https://github.com/kenzok8/luci-theme-ifit.git package/lean/luci-theme-ifit
-```
-* 添加常用软件包
-```bash
-git clone https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
-```
-* 删除默认密码
-```bash
-sed -i "/CYXluq4wUazHjmCDBCqXF/d" package/lean/default-settings/files/zzz-default-settings
-```
-
-* 取消bootstrap为默认主题	
-```bash
-sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
-```
-
-
+* 云编译取消以下选项(要不然编译速度慢)：
+  luci-app-fileborowser
+  luci-app-unblockneteasemusic
+* 把没用的关联也取消
+  vim .config
+  CONFIG_FILEBROWSER_COMPRESS_UPX=n
+  CONFIG_UnblockNeteaseMusic_Go=n
+  CONFIG_UnblockNeteaseMusic_NodeJS=n
+  CONFIG_PACKAGE_luci-app-unblockneteasemusic=n
+  CONFIG_PACKAGE_luci-app-unblockneteasemusic-go=n
+  CONFIG_PACKAGE_luci-app-unblockneteasemusic-mini=n
+  CONFIG_PACKAGE_UnblockNeteaseMusic=n
+  CONFIG_PACKAGE_UnblockNeteaseMusic-Go=n
+  CONFIG_UNBLOCKNETEASEMUSIC_GO_COMPRESS_UPX=n
+* 最后执行  
+  make defconfig
