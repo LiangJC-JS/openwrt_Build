@@ -61,6 +61,7 @@
 ### N1云编译需要注意：
 
 * 云编译取消以下选项(要不然编译速度慢)：
+  - luci-app-filebrowser
   - luci-app-jd-dailybonus
   - luci-app-unblockneteasemusic
 * 关联取消
