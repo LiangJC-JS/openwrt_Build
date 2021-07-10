@@ -4,7 +4,7 @@
 # Author: LiangJC
 #=================================================
 
-name: openwrt_N1_toolchain
+name: openwrt_build_pack_N1
 
 on:
   repository_dispatch:
@@ -63,8 +63,10 @@ jobs:
       env: 
         REPO_URL: https://github.com/immortalwrt/immortalwrt
         REPO_BRANCH: openwrt-18.06
+        MK_URL: https://github.com/LiangJC-JS/mk_openwrt_firmware.git
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone --depth 1 $MK_URL
         cd openwrt
         echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
    
@@ -98,10 +100,18 @@ jobs:
         echo -e "$(($(nproc)+1)) thread compile"
         make -j$(($(nproc)+1)) || make -j1 || make -j1 V=s
         
+    - name: 打包固件
+      run: | 
+        mkdir -p mk_openwrt_firmware/rootfs
+        cp openwrt/bin/targets/armvirt/64/immortalwrt-armvirt-64-default-rootfs.tar.gz mk_openwrt_firmware/rootfs
+        cd mk_openwrt_firmware
+        chmod +x ./mk_s905d_n1.sh && sudo bash mk_s905d_n1.sh && sudo chown $USER:$USER -R tmp/
+        cp -a tmp/*.gz ../openwrt/bin
+
     - name : 上传固件
       uses: actions/upload-artifact@main
       with:
-        name: N1_toolchain
-        path: openwrt/build_dir/toolchain*
+        name: N1_Firmware
+        path: openwrt/bin
     
-        
+      
